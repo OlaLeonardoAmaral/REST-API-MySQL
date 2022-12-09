@@ -9,7 +9,7 @@ import com.leo.users.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-	@Query(value = "SELECT * FROM users WHERE id = (:id)", nativeQuery = true)
-	Page<User> searchById(Pageable pageable, Integer id);
+	@Query(value = "SELECT * FROM users WHERE first_name like (%:firstName%)", nativeQuery = true)
+	Page<User> searchByName(Pageable pageable, String firstName);
 
 }

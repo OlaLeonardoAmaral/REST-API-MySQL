@@ -25,8 +25,12 @@ public class UserService {
 		userRepository.save(user);
 	}
 	
-	public Page<User> getUser(Pageable pageable, Integer id) {
-		return userRepository.searchById(pageable, id);
+	public User getUser(Integer id) {
+		return userRepository.findById(id).get();
+	}
+	
+	public Page<User> getUserByName(Pageable pageable, String firstName) {
+		return userRepository.searchByName(pageable, firstName);
 	}
 	
 	public void deleteUser(Integer id) {
